@@ -1,0 +1,39 @@
+{
+  "name": "react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular-expressions": "^1.2.1",
+    "date-and-time": "^3.5.0",
+    "docx-preview": "^0.3.2",
+    "docxtemplater": "3.43.0",
+    "file-saver": "2.0.5",
+    "pizzip": "3.1.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-form-component": "^2.6.6",
+    "react-router-dom": "6.21.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest",
+    "sass": "^1.78.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
