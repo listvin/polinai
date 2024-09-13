@@ -15,7 +15,7 @@ function genFilename(fullname = '', birthday = '') {
         ? birthday.substr(-4)
         : /^\d\d\d\d[^\d]*$/.test(birthday) ? birthday.substr(0,4) : null
     const yo = by
-        ? ` ${2024-Number(by)}`// лет`
+        ? ` ${((new Date()).getFullYear())-Number(by)}`// лет`
         : ''
 
     // const [sur, fst, mid] = fullname.trim().split(/ +/)
