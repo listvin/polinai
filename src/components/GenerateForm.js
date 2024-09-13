@@ -47,6 +47,7 @@ export function GeneratedForm({ versionUpdateHandler }) {
           <Form 
             allMandatory={true}
             //mandatory={schema.map((d) => d.tag)} 
+            runOnChangeInitially={true}
             
             fields={schema.map((d) => d.tag)} 
             onChange={onChange}

@@ -1,6 +1,7 @@
 {
-  "name": "react",
-  "version": "0.0.0",
+  "name": "polinai",
+  "version": "v0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "angular-expressions": "^1.2.1",
