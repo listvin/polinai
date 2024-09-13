@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "../panes.css";
 import { Parameter } from "./Parameters";
-import Form, { FormThemeProvider } from 'react-form-component'
+import Form, { FormThemeProvider, SubmitButton } from 'react-form-component'
 import { generateDocument } from "../core/doc-generator";
+import { downloadFile, genFilename } from "../core/utils";
 
 // npm install @mui/material @emotion/react @emotion/styled
 // import { ThemeProvider, createTheme } from '@mui/material/styles'; //<-- import createMuiTheme
 
 export function GeneratedForm({ versionUpdateHandler }) {
-  const onClick = undefined
   const [schema, setSchema] = useState([]);
 
 
@@ -17,23 +17,39 @@ export function GeneratedForm({ versionUpdateHandler }) {
   //     await fetch("schema.json").then(r => r.json);
   // })();
 
-  const onChange = (fieldsData, hasErrors, fieldName) => {
+  const onChange = (fieldsData, hasErrors, fieldName, doWithBlob) => {
     console.log("onChange:", fieldsData, fieldName, hasErrors)
     generateDocument(fieldsData, (blob) => {
       console.log("callback of doc generation triggered")
       versionUpdateHandler(blob)
       console.info("callback of doc generation complete")
+      if (doWithBlob) doWithBlob(blob)
+    })
+  }
+
+  const onSubmit = (fieldsData) => {
+    onChange(fieldsData, undefined, undefined, (blob) => {
+      downloadFile(blob, blob?.x_filename ?? genFilename())
     })
   }
 
   // const theme = createTheme()
-
+/*  */
   return (
     <div class="split left">
       <div class="content">
         <FormThemeProvider theme={{}}>
-          <Form fields={schema.map((d) => d.tag)} onChange={onChange}>
+          <Form 
+            allMandatory={true}
+            //mandatory={schema.map((d) => d.tag)} 
+            
+            fields={schema.map((d) => d.tag)} 
+            onChange={onChange}
+            >
             {schema.map((d) => <Parameter def={d}/>)}
+            <div id="form-submit-container" hidden>
+              <SubmitButton onClick={onSubmit}/>
+            </div>
           </Form>
         </FormThemeProvider>
       </div>

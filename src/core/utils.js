@@ -1,6 +1,16 @@
 //TODO take year from dt
 
-export function genFilename(fullname = '', birthday = '') {
+function downloadFile(blob, filename) {
+    const a = document.createElement('a')
+    a.setAttribute('href', URL.createObjectURL(blob))
+    a.setAttribute('hidden', 'true')
+    a.setAttribute('download', filename)
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+}
+
+function genFilename(fullname = '', birthday = '') {
     const by = /^(\d\d\.\d\d\.)?\d\d\d\d$/.test(birthday) 
         ? birthday.substr(-4)
         : /^\d\d\d\d[^\d]*$/.test(birthday) ? birthday.substr(0,4) : null
@@ -19,16 +29,17 @@ export function genFilename(fullname = '', birthday = '') {
         .replace(/^ .docx$/, 'noname.docx')
 }
 
+// function test(n, bd) {
+//     console.log(`n=${n}, bd=${bd} => "${genFilename(n, bd)}"`)
+// }
+// test('Иванов Артур Богданович', '22.11.2000')
+// test('Иванов А B', '1989')
+// test('Иванов Артур', '')
+// test('Иванов', '2000')
+// test('Иванов', '22.11.2000')
+// test('Иванов', '2212y')
+// test('')
+// test('','')
+// test()
 
-function test(n, bd) {
-    console.log(`n=${n}, bd=${bd} => "${genFilename(n, bd)}"`)
-}
-test('Иванов Артур Богданович', '22.11.2000')
-test('Иванов А B', '1989')
-test('Иванов Артур', '')
-test('Иванов', '2000')
-test('Иванов', '22.11.2000')
-test('Иванов', '2212y')
-test('')
-test('','')
-test()
+export { genFilename, downloadFile }
