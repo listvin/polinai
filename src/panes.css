@@ -29,3 +29,42 @@ body, html, #root, #app_root {
     /* This is just to create enough content to scroll */
     padding: 20px;
 }
+
+color {
+    color: #1fc59c;
+color: #3d4348;
+color: #e6edf4;
+color: #e6edf4;
+color: #c3d4e4;
+color: #00a651;
+color: #e50038;
+}
+/* ==== FAB ==== */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    background-color: #FDD835; /* Color for the button */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    z-index: 10;
+  }
+  
+  .fab:hover {
+    background-color: #d8b92e; /* Darker color on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .fab:active {
+    background-color: #FDD835; /* Color change on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }

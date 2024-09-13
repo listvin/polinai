@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../panes.css";
 import { genFilename } from "../core/utils";
+import { toast } from 'react-toastify';
 
 const url = "v0.docx"
 
@@ -41,18 +42,22 @@ export function DocxPreview({ blob }) {
 
   const submit = () => {
     document.querySelector('#form-submit-container>button').click()
+    toast(`${fname} downloaded`, { autoClose: 2000, hideProgressBar: true, closeButton: false })
   }
 
   return (
     <div className="split right">
-      <div id="docx-toolbar" className="btn-group p-2">
+      {/* <div id="docx-toolbar" className="btn-group p-2">
         <button className="btn btn-primary"
           onClick={submit}>
           Download "{fname}"
         </button>
-      </div>
+      </div> */}
       {/* <p><code>version {count} blob.size={blob?.size}</code></p> */}
       <div id="docx-preview"></div>
-          </div>
+      <div className="fab" onClick={submit}>
+        ⬇
+      </div>
+    </div>
   );
 }

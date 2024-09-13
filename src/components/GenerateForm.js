@@ -33,12 +33,17 @@ export function GeneratedForm({ versionUpdateHandler }) {
     })
   }
 
+  const colors = {
+    accent: '#FDD835',
+    success: '#FDD835',
+  }
+
   // const theme = createTheme()
 /*  */
   return (
-    <div class="split left">
-      <div class="content">
-        <FormThemeProvider theme={{}}>
+    <div className="split left">
+      <div className="content">
+        <FormThemeProvider theme={{ colors: colors }}>
           <Form 
             allMandatory={true}
             //mandatory={schema.map((d) => d.tag)} 
